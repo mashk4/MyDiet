@@ -9,3 +9,16 @@ body {
 .navbar, .navbar-light {
   background-color: #A4C3B2;
 }
+
+.btn-primary {
+  background-color: #6B9080;
+  border: #6B9080;
+}
+
+.btn-primary:hover {
+  background-color: #729b79;
+}
+
+.link-success {
+  color: #2e2c2f;
+}
