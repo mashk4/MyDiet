@@ -1,24 +1,42 @@
-# README
+# MyDiet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MyDiet is a web application that helps you count your calories and make diets. You provide the meals and foods you have eaten during the day, and MyDiet tracks and calculates all the calories and nutrients in your food.
 
-Things you may want to cover:
+## Dependencies
+This app uses such gems:
+- [Devise](https://github.com/heartcombo/devise)
+- [Sidekiq](https://github.com/mperham/sidekiq)
+- [Sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron)
 
-* Ruby version
+## Installation
+The setups steps expect following tools installed on the system:
 
-* System dependencies
+- Git
+- Ruby 3.1.2
+- Rails 7.0.3
 
-* Configuration
+### Set up Rails app
+1. Clone MyDiet:
 
-* Database creation
+```bash
+git clone https://github.com/mashk4/MyDiet
+cd MyDiet
+```
 
-* Database initialization
+2. Install the gems required by the application:
 
-* How to run the test suite
+```bash
+bundle
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Next, execute the database migrations/schema setup:
 
-* Deployment instructions
+```bash
+bundle exec rails db:setup
+```
 
-* ...
+4. Start Rails server
+
+```bash
+rails s
+```
