@@ -1,0 +1,19 @@
+<article class="card mb-3">
+    <div class="card-body">
+      <h3><%= diet.name %></h3>
+
+      <section class="card-text">
+        <time datetime="<%= diet.format_date %>">
+          <small>for date: <%= diet.format_date %></small>
+        </time>
+      </section>
+
+      <div class="btn-group">
+        <%= link_to 'Show', diet_path(diet), class: 'btn btn-primary mt-2 me-2'%>
+        <%= link_to 'Edit', edit_diet_path(diet), class: 'btn btn-primary mt-2 me-2'%>
+        <%= button_to 'Delete', diet_path(diet), method: :delete,
+        form: { data: { turbo_confirm: 'Are you sure you want to delete your diet? All data will be lost.' } },
+        class: 'btn btn-danger mt-2 me-2' %>
+      </div>
+    </div>
+</article>

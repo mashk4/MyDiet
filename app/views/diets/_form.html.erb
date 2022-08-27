@@ -1,0 +1,28 @@
+<%= render 'shared/errors', object: @diet %>
+
+<div class="container mt-4">
+
+  <h2>New diet</h2>
+
+  <%= form_with model: @diet do |f| %>
+
+      <div class="field mt-3 col-sm-5">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, placeholder: "Your diet", class: 'form-control' %>
+      </div>
+
+      <div class="field mt-3 col-sm-5">
+        <%= f.label :date, 'For date:' %>
+        <%= f.text_field :date, type: 'date' %>
+      </div>
+
+      <div>
+        <%= f.submit "Save Diet", class: 'btn btn-primary mt-3'%>
+      </div>
+
+  <% end %>
+
+  <div class="mt-4">
+    <%= link_to 'Cancel', diets_path, class: 'link-success' %>
+  </div>
+</div>

@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :diets
+
   root 'pages#index'
 end

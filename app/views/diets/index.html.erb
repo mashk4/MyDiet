@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="mb-4 mt-4">Your diet today</h1>
+  <div class="mt-3 mb-3">
+    <%= form_tag(diets_path, method: :get) do  %>
+      <label>Select by day:</label>
+      <%= date_field_tag(:search, params[:search]) %>
+      <%= submit_tag('Find') %>
+    <% end %>
+  </div>
+
+  <% if @diets.present? %>
+    <% @diets.each do |diet| %>
+      <%= render diet %>
+    <% end %>
+  <% else %>
+    <%= 'You have no diets for this day.' %>
+  <% end %>
+
+  <div class="button-group mt-3 mb-3">
+    <%= link_to 'Create a new diet', new_diet_path(@diet), class: 'btn btn-primary' %>
+  </div>
+</div>
