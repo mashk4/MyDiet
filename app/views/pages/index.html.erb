@@ -1,5 +1,12 @@
 <div class="container mt-4">
   <h1>MyDiet</h1>
-  <p>Initial version of MyDiet App. It can help you count your calories and make diets.</p>
+  <p>MyDiet Application can help you count your calories and make diets.</p>
+  <% unless current_user %>
+    <p>Please,
+    <em><%= link_to 'Log in', new_user_session_path, class: 'link-success' %></em>
+    or
+    <em><%= link_to 'Sign up', new_user_registration_path, class: 'link-success' %></em>
+    to use this app.</p>
+  <% end %>
   &copy; Mariia S., <%= Time.now.year %>
 </div>

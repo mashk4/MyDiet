@@ -30,6 +30,7 @@ gem "jbuilder"
 gem 'devise', '~> 4.8.1'
 gem 'sidekiq', '~> 6.5.5'
 gem 'sidekiq-cron', '~> 1.7.0'
+gem 'httparty', '~> 0.17.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

@@ -1,0 +1,204 @@
+bacon
+kebab
+beef
+chicken
+cooked meat
+duck
+ham
+kidneys
+lamb
+liver
+salami
+sausages
+pork
+sausage roll
+turkey
+veal
+apple
+apricot
+banana
+blackberry
+blackcurrant
+blueberry
+cherry
+coconut
+fig
+gooseberry
+grape
+grapefruit
+kiwi fruit
+kiwi
+lemon
+lime
+mango
+melon
+orange
+peach
+pear
+pineapple
+plum
+pomegranate
+raspberry
+redcurrant
+rhubarb
+strawberry
+butter
+cream
+cheese
+blue cheese
+cottage cheese
+goats cheese
+eggs
+margarine
+milk
+sour cream
+yoghurt
+baguette
+bread rolls
+brown bread
+white bread
+garlic bread
+pitta
+loaf
+cake
+danish pastry
+quiche
+sponge cake
+dried apricots
+prunes
+dates
+raisins
+sultanas
+anchovy
+cod
+haddock
+herring
+kipper
+mackerel
+pilchard
+plaice
+salmon
+sardine
+smoked salmon
+sole
+trout
+tuna
+artichoke
+asparagus
+aubergine
+avocado
+beansprouts
+beetroot
+broad beans
+broccoli
+Brussels sprouts
+cabbage
+carrot
+cauliflower
+celery
+chilli
+pepper
+courgette
+cucumber
+french beans
+garlic
+ginger
+leek
+lettuce
+mushroom
+onion
+peas
+potato
+potatoes
+pumpkin
+radish
+rocket
+runner beans
+swede
+sweet potato
+sweet potatoes
+sweetcorn
+tomato
+tomatoes
+turnip
+spinach
+spring onion
+squash
+garlic
+celery
+baked beans
+corned beef
+kidney beans
+soup
+chips
+fish
+frozen peas
+frozen pizza
+ice cream
+tomato puree
+cereal
+cornflakes
+honey
+jam
+marmalade
+muesli
+porridge
+toast
+noodles
+pasta
+pasta sauce
+pizza
+rice
+spaghetti
+ketchup
+mayonnaise
+mustard
+salad dressing
+salt
+vinaigrette
+vinegar
+biscuits
+chocolate
+crisps
+hummus
+nuts
+olives
+peanuts
+sweets
+walnuts
+cookies
+coffee
+tea
+latte
+coke
+croissant
+crackers
+doughnut
+hot dog
+orange juice
+apple juice
+blueberry juice
+cranberyy juice
+carrot juice
+grape juice
+grapefruit juice
+pomegranate juice
+pineapple juice
+tomato juice
+chicken soup
+cream soup
+broth
+borscht
+shawarma
+thai chicken
+salad
+beet salad
+caesar salad
+shrimps
+chicken salad
+vegetables salad
+sushi
+burger
+beef burger
+pickle
+popcorn

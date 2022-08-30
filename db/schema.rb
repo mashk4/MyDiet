@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_27_114713) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_28_124528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "diet_meals", force: :cascade do |t|
+    t.bigint "diet_id", null: false
+    t.bigint "meal_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diet_id", "meal_id"], name: "index_diet_meals_on_diet_id_and_meal_id", unique: true
+    t.index ["diet_id"], name: "index_diet_meals_on_diet_id"
+    t.index ["meal_id"], name: "index_diet_meals_on_meal_id"
+  end
 
   create_table "diets", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -22,6 +32,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_114713) do
     t.string "name", default: "Your Diet", null: false
     t.index ["user_id", "date"], name: "index_diets_on_user_id_and_date", unique: true
     t.index ["user_id"], name: "index_diets_on_user_id"
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.string "name"
+    t.integer "calories"
+    t.integer "sugar"
+    t.integer "protein"
+    t.integer "fat"
+    t.integer "carbohydrates"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_meals_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,5 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_114713) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "diet_meals", "diets"
+  add_foreign_key "diet_meals", "meals"
   add_foreign_key "diets", "users"
 end

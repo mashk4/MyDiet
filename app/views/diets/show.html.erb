@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <article class="card mb-3">
     <div class="card-body">
-      <h3><%= @diet.name %></h3>
+      <h1><%= @diet.name %></h1>
 
       <section class="card-text">
         <time datetime="<%= @diet.format_date %>">
@@ -9,8 +9,30 @@
         </time>
       </section>
 
+      <hr>
+
       <div class="mt-4">
-        <h3>Meals:</h3>
+        <h3><strong>Meals:</strong></h3>
+      </div>
+
+      <div class="my-2">
+        <%= render @diet.meals %>
+      </div>
+
+      <div class="my-3">
+        <h3><strong>Total calories:</strong></h3>
+        <%= @diet.meals.sum(&:calories) %>
+
+      </div>
+
+      <div class="my-3">
+        <h3><strong>Nutrients:</strong></h3>
+        <ul>
+          <li>Surgar: <%= @diet.meals.sum(&:sugar) %></li>
+          <li>Protein: <%= @diet.meals.sum(&:protein) %></li>
+          <li>Fat: <%= @diet.meals.sum(&:fat) %></li>
+          <li>Carbohydrates: <%= @diet.meals.sum(&:carbohydrates) %></li>
+        </ul>
       </div>
 
       <div class="btn-group">
