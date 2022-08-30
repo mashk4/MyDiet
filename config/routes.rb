@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :diets
+  resources :eaten_products
 
   root 'pages#index'
 end

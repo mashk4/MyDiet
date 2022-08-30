@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <article class="card mb-3">
+    <div class="card-body">
+      <h1>List of your eaten meals</h1>
+
+      <section class="card-text">
+        <time datetime="<%= @eaten_product.format_date %>">
+          <small>for date: <%= @eaten_product.format_date %></small>
+        </time>
+      </section>
+
+      <hr>
+
+      <div class="mt-4">
+        <h3><strong>Eaten meals:</strong></h3>
+      </div>
+
+      <div class="my-2">
+        <%= render @eaten_product.meals %>
+      </div>
+
+      <div class="btn-group">
+        <%= link_to 'Edit', edit_eaten_product_path(@eaten_product), class: 'btn btn-primary mt-2 me-2'%>
+        <%= button_to 'Delete', eaten_product_path(@eaten_product), method: :delete,
+        form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-danger mt-2 me-2' %>
+      </div>
+    </div>
+  </article>
+
+  <div class="mt-4">
+    <%= link_to 'Back', eaten_products_path, class: 'link-success' %>
+  </div>
+
+</div>
+

@@ -31,6 +31,7 @@ gem 'devise', '~> 4.8.1'
 gem 'sidekiq', '~> 6.5.5'
 gem 'sidekiq-cron', '~> 1.7.0'
 gem 'httparty', '~> 0.17.3'
+gem 'rubocop-rails', '~> 2.15'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -61,6 +62,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'bullet', '~> 7.0.3'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

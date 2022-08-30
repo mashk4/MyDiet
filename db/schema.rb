@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_28_124528) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_200835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_28_124528) do
     t.string "name", default: "Your Diet", null: false
     t.index ["user_id", "date"], name: "index_diets_on_user_id_and_date", unique: true
     t.index ["user_id"], name: "index_diets_on_user_id"
+  end
+
+  create_table "eaten_product_meals", force: :cascade do |t|
+    t.bigint "eaten_product_id", null: false
+    t.bigint "meal_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eaten_product_id", "meal_id"], name: "index_eaten_product_meals_on_eaten_product_id_and_meal_id", unique: true
+    t.index ["eaten_product_id"], name: "index_eaten_product_meals_on_eaten_product_id"
+    t.index ["meal_id"], name: "index_eaten_product_meals_on_meal_id"
+  end
+
+  create_table "eaten_products", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "eaten_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "eaten_at"], name: "index_eaten_products_on_user_id_and_eaten_at", unique: true
+    t.index ["user_id"], name: "index_eaten_products_on_user_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -62,4 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_28_124528) do
   add_foreign_key "diet_meals", "diets"
   add_foreign_key "diet_meals", "meals"
   add_foreign_key "diets", "users"
+  add_foreign_key "eaten_product_meals", "eaten_products"
+  add_foreign_key "eaten_product_meals", "meals"
+  add_foreign_key "eaten_products", "users"
 end

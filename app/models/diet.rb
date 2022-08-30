@@ -9,13 +9,13 @@ class Diet < ApplicationRecord
   validate :correct_date
   # validate :date_is_taken
 
-  def format_date
-    date.strftime('%d-%m-%Y')
-  end
-
-  def self.search(date)
+  scope :search_by_day, ->(date) do
     diet = Diet.find_by(date: date || Date.today)
     where(id: diet)
+  end
+
+  def format_date
+    date.strftime('%d-%m-%Y')
   end
 
   private

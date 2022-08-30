@@ -4,6 +4,7 @@ body {
   background-color: #f6fcf3;
   font-family: 'Raleway', sans-serif;
   font-size: 18px;
+  padding-bottom: 50px;
 }
 
 .navbar, .navbar-light {

@@ -4,7 +4,7 @@ class DietsController < ApplicationController
   before_action :fetch_meals, only: %i[new edit update]
 
   def index
-    @diets = current_user.diets.search(params[:search])
+    @diets = current_user.diets.search_by_day(params[:search_by_day])
   end
 
   def show; end
@@ -44,11 +44,11 @@ class DietsController < ApplicationController
   private
 
   def create_diet_params
-    params.require(:diet).permit(:name, :date, :search, meal_ids: []).merge(user: current_user)
+    params.require(:diet).permit(:name, :date, :search_by_day, meal_ids: []).merge(user: current_user)
   end
 
   def update_diet_params
-    params.require(:diet).permit(:name, :date, :search, meal_ids: [])
+    params.require(:diet).permit(:name, :date, :search_by_day, meal_ids: [])
   end
 
   def find_diet

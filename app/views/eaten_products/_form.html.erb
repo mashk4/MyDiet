@@ -1,0 +1,27 @@
+<%= render 'shared/errors', object: @eaten_product %>
+
+<div class="container mt-4">
+
+  <h2>Add new eaten meals list</h2>
+
+  <%= form_with model: @eaten_product do |f| %>
+
+      <div class="field mt-3 col-sm-5">
+        <%= f.label :eaten_at, 'You ate it at:' %>
+        <%= f.text_field :eaten_at, required: true,
+          data: {
+          controller: "flatpickr",
+          min_date: Time.now
+        } %>
+      </div>
+
+      <div class="form mt-3 col-sm-5" data-controller="select2">
+        <%= f.label :meals, 'Choose meal that you ate:' %><br/>
+        <%= f.collection_select :meal_ids, meals, :id, :name, {}, multiple: true %>
+      </div>
+
+      <div>
+        <%= f.submit "Save", class: 'btn btn-primary mt-3'%>
+      </div>
+  <% end %>
+</div>
