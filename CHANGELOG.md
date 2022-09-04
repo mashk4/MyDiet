@@ -1,5 +1,14 @@
 # 1.2.0 - 2022-08-30
  * Added:
+    * Roles: admin and basic user;
+    * Dashboard for admin with all users. Admin can now export and import users in xlsx format. The structure for importing users in xlsx format for each row is
+
+    `name | email | password`;
+
+    * Policies with help of Pundit gem.
+
+# 1.2.0 - 2022-08-30
+ * Added:
     * EatenProduct entity and some stats.
 
 # 1.2.0 - 2022-08-30

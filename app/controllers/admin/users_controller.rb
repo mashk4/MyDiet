@@ -1,7 +1,9 @@
 module Admin
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     before_action :authenticate_user!
     before_action :find_user, except: %i[index create]
+    before_action :authorized_user!
+    after_action :verify_authorized
 
     def index
       respond_to do |format|
@@ -45,6 +47,10 @@ module Admin
 
     def user_params
       params.require(:user).permit(:name, :email, :role)
+    end
+
+    def authorized_user!
+      authorize(@user || User)
     end
 
     def respond_with_zipped_users

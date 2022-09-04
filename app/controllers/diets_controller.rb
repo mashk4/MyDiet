@@ -2,6 +2,8 @@ class DietsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_diet, only: %i[show edit update destroy]
   before_action :fetch_meals, only: %i[new edit update]
+  before_action :authorize_diet!
+  after_action :verify_authorized
 
   def index
     @diets = current_user.diets.search_by_day(params[:search_by_day])
@@ -57,5 +59,9 @@ class DietsController < ApplicationController
 
   def fetch_meals
     @meals = Meal.all
+  end
+
+  def authorize_diet!
+    authorize(@diet || Diet)
   end
 end

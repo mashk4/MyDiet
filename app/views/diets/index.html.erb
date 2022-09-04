@@ -20,7 +20,9 @@
     <%= 'You have no diets for this day.' %>
   <% end %>
 
-  <div class="button-group mt-3 mb-3">
-    <%= link_to 'Create a new diet', new_diet_path(@diet), class: 'btn btn-primary' %>
-  </div>
+  <% if policy(:diet).new? %>
+    <div class="button-group mt-3 mb-3">
+      <%= link_to 'Create a new diet', new_diet_path(@diet), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>

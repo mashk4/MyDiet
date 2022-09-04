@@ -11,6 +11,11 @@
         <li class="nav-item">
           <%= link_to 'Home', root_path, class: 'nav-link' %>
         </li>
+        <% if policy([:admin, :user]).index? %>
+          <li class="nav-item">
+            <%= link_to 'Users', admin_users_path, class: 'nav-link' %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav">
         <%= render 'user/session_manager' %>

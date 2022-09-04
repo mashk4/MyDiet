@@ -1,4 +1,6 @@
 class Diet < ApplicationRecord
+  include Authorship
+
   belongs_to :user
 
   has_many :diet_meals, dependent: :destroy

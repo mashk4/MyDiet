@@ -14,6 +14,14 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true,
   format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
+  def guest?
+    false
+  end
+
+  def author?(obj)
+    obj.user == self
+  end
+
   private
 
   def remove_redundant_chars!

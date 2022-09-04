@@ -2,6 +2,8 @@ class EatenProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_eaten_product, only: %i[show edit update destroy]
   before_action :fetch_meals, only: %i[new edit update]
+  before_action :authorize_eaten_product!
+  after_action :verify_authorized
 
   def index
     @eaten_products = current_user.eaten_products.search_by_day(params[:search_by_day])
@@ -44,7 +46,8 @@ class EatenProductsController < ApplicationController
   private
 
   def create_eaten_product_params
-    params.require(:eaten_product).permit(:eaten_at, :search_by_day, meal_ids: []).merge(user: current_user)
+    params.require(:eaten_product).permit(:eaten_at, :search_by_day, meal_ids: [])
+    .merge(user: current_user)
   end
 
   def update_eaten_product_params
@@ -57,5 +60,9 @@ class EatenProductsController < ApplicationController
 
   def fetch_meals
     @meals = Meal.all
+  end
+
+  def authorize_eaten_product!
+    authorize(@eaten_product || EatenProduct)
   end
 end

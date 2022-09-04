@@ -1,4 +1,6 @@
 class EatenProduct < ApplicationRecord
+  include Authorship
+
   belongs_to :user
 
   has_many :eaten_product_meals, dependent: :destroy

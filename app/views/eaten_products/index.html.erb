@@ -57,8 +57,11 @@
 
   <% else %>
     <%= 'You have no eaten meals for this day.' %>
-    <div class="button-group mt-3 mb-3">
-      <%= link_to 'Add new eaten meals list', new_eaten_product_path(@eaten_product), class: 'btn btn-primary' %>
-    </div>
+
+    <% if policy(:eaten_product).new? %>
+      <div class="button-group mt-3 mb-3">
+        <%= link_to 'Add new eaten meals list', new_eaten_product_path(@eaten_product), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   <% end %>
 </div>

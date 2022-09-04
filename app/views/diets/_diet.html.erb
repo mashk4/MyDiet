@@ -10,10 +10,16 @@
 
       <div class="btn-group">
         <%= link_to 'Show', diet_path(diet), class: 'btn btn-primary mt-2 me-2'%>
-        <%= link_to 'Edit', edit_diet_path(diet), class: 'btn btn-primary mt-2 me-2'%>
-        <%= button_to 'Delete', diet_path(diet), method: :delete,
-        form: { data: { turbo_confirm: 'Are you sure you want to delete your diet? All data will be lost.' } },
-        class: 'btn btn-danger mt-2 me-2' %>
+        
+        <% if policy(diet).edit? %>
+          <%= link_to 'Edit', edit_diet_path(diet), class: 'btn btn-primary mt-2 me-2'%>
+        <% end %>
+
+        <% if policy(diet).destroy? %>
+          <%= button_to 'Delete', diet_path(diet), method: :delete,
+          form: { data: { turbo_confirm: 'Are you sure you want to delete your diet? All data will be lost.' } },
+          class: 'btn btn-danger mt-2 me-2' %>
+        <% end %>
       </div>
     </div>
 </article>
