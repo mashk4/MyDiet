@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :eaten_products
 
   namespace :admin do
-    resources :users, only: %i[index create]
+    resources :users
   end
 
   root 'pages#index'

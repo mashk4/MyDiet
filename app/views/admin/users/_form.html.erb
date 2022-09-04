@@ -1,0 +1,33 @@
+<%= render 'shared/errors', object: user %>
+
+<div class="container mt-4">
+
+  <h2>Edit user</h2>
+
+  <%= form_with model: [:admin, user] do |f| %>
+      <% if user.name.present? %>
+        <div class="field mt-3 col-sm-5">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, class: 'form-control-plaintext', readonly: true %>
+        </div>
+      <% end %>
+
+      <div class="field mt-3 col-sm-5">
+        <%= f.label :email %><br />
+        <%= f.text_field :email, class: 'form-control-plaintext', readonly: true %>
+      </div>
+
+      <div class="field mt-3 col-sm-5">
+        <%= f.label :role %><br />
+        <%= f.select :role, user_roles, {}, class: 'form-select' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Save", class: 'btn btn-primary mt-3'%>
+      </div>
+  <% end %>
+
+  <div class="mt-4">
+    <%= link_to 'Cancel', admin_users_path, class: 'link-success' %>
+  </div>
+</div>
