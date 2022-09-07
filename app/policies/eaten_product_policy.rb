@@ -18,4 +18,8 @@ class EatenProductPolicy < ApplicationPolicy
   def destroy?
     user.author?(record) || user.admin_role?
   end
+
+  def send_report?
+    user.author?(record) || user.admin_role?
+  end
 end

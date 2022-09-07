@@ -35,3 +35,19 @@ body {
   background-color: #d1e7dd;
   border-color: #badbcc;
 }
+
+.btn-group {
+  display: flex;
+}
+
+.left-group {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.right-group {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}

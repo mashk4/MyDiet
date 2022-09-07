@@ -1,0 +1,47 @@
+<h1>Your report for <%= @eaten_product.format_date %></h1>
+
+<div>
+  <p>Hello, <%= @user.name || @user.email %>!</p>
+  Here is the list of what you have eaten:
+    <% @eaten_product.meals.each do |eaten_product| %>
+      <ul class="list-group">
+        <li class="list-group-item mt-1 col-sm-2">
+          <%= eaten_product.name.capitalize %>
+        </li>
+      </ul>
+    <% end %>
+</div>
+
+<div class="card-body mt-3">
+  <h3>Stats for this day:</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nutrients</th>
+          <th scope="col">In total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Calories</th>
+          <td><%= @eaten_product.meals.sum(&:calories) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Sugar</th>
+          <td><%= @eaten_product.meals.sum(&:sugar) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Protein</th>
+          <td><%= @eaten_product.meals.sum(&:protein) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Fat</th>
+          <td><%= @eaten_product.meals.sum(&:fat) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Carbohydrates</th>
+          <td><%= @eaten_product.meals.sum(&:carbohydrates) %></td>
+        </tr>
+      </tbody>
+    </table>
+</div>

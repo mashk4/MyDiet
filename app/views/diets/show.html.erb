@@ -36,14 +36,16 @@
       </div>
 
       <div class="btn-group">
-        <% if policy(diet).edit? %>
-          <%= link_to 'Edit', edit_diet_path(@diet), class: 'btn btn-primary mt-2 me-2'%>
-        <% end %>
-        
-        <% if policy(diet).destroy? %>
-          <%= button_to 'Delete', diet_path(@diet), method: :delete,
-          form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-danger mt-2 me-2' %>
-        <% end %>
+        <div class="left-group">
+          <% if policy(@diet).edit? %>
+            <%= link_to 'Edit', edit_diet_path(@diet), class: 'btn btn-primary mt-2 me-2'%>
+          <% end %>
+
+          <% if policy(@diet).destroy? %>
+            <%= button_to 'Delete', diet_path(@diet), method: :delete,
+            form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-danger mt-2 me-2' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </article>

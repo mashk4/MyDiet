@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :diets
-  resources :eaten_products
+  resources :diets, :eaten_products
+
+  resources :eaten_products do
+    get 'send_report', on: :member
+  end
 
   namespace :admin do
     resources :users

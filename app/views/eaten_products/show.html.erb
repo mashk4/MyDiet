@@ -20,14 +20,16 @@
       </div>
 
       <div class="btn-group">
-        <% if policy(eaten_product).edit? %>
-          <%= link_to 'Edit', edit_eaten_product_path(@eaten_product), class: 'btn btn-primary mt-2 me-2'%>
-        <% end %>
+        <div class="left-group">
+          <% if policy(@eaten_product).edit? %>
+            <%= link_to 'Edit', edit_eaten_product_path(@eaten_product), class: 'btn btn-primary mt-2 me-2'%>
+          <% end %>
 
-        <% if policy(eaten_product).destroy? %>
-          <%= button_to 'Delete', eaten_product_path(@eaten_product), method: :delete,
-          form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-danger mt-2 me-2' %>
-        <% end %>
+          <% if policy(@eaten_product).destroy? %>
+            <%= button_to 'Delete', eaten_product_path(@eaten_product), method: :delete,
+            form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-danger mt-2 me-2' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </article>

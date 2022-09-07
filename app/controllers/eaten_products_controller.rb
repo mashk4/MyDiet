@@ -1,6 +1,6 @@
 class EatenProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_eaten_product, only: %i[show edit update destroy]
+  before_action :find_eaten_product, only: %i[show edit update destroy send_report]
   before_action :fetch_meals, only: %i[new edit update]
   before_action :authorize_eaten_product!
   after_action :verify_authorized
@@ -18,6 +18,8 @@ class EatenProductsController < ApplicationController
   def create
     @eaten_product = current_user.eaten_products.build(create_eaten_product_params)
     if @eaten_product.save
+      ReportMailer.with(user: current_user, eaten_product: @eaten_product)
+      .send_report.deliver_later
       flash[:success] = 'Eaten meals list was successfully added!'
       redirect_to eaten_product_path(@eaten_product)
     else
@@ -39,6 +41,13 @@ class EatenProductsController < ApplicationController
   def destroy
     @eaten_product.destroy
     flash[:success] = 'Eaten meals list was successfully deleted!'
+
+    redirect_to eaten_products_path
+  end
+
+  def send_report
+    ReportMailer.with(user: current_user, eaten_product: @eaten_product)
+    .send_report.deliver_later
 
     redirect_to eaten_products_path
   end
