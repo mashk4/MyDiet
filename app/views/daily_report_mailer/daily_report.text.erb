@@ -1,0 +1,36 @@
+Your report for <%= @eaten_product.format_date %>
+
+
+Hello, <%= @user.name || @user.email %>!
+
+Here is the list of what you have eaten today:
+<% @eaten_product.meals.each do |eaten_product| %>
+ - <%= eaten_product.name.capitalize %>
+<% end %>
+
+Total calories: <%= @eaten_product.meals.sum(&:calories) %>
+
+Nutrients:
+<% %w[sugar protein fat carbohydrates].each do |el| %>
+  <%= el.capitalize %>: <%= @eaten_product.meals.sum(&el.to_sym) %>
+<% end %>
+
+<% if @previous_eaten_product %>
+
+Here is the list of what you have eaten yesterday:
+<% @previous_eaten_product.meals.each do |eaten_product| %>
+ - <%= eaten_product.name.capitalize %>
+<% end %>
+
+Total calories: <%= @previous_eaten_product.meals.sum(&:calories) %>
+
+Nutrients:
+<% %w[sugar protein fat carbohydrates].each do |el| %>
+  <%= el.capitalize %>: <%= @previous_eaten_product.meals.sum(&el.to_sym) %>
+<% end %>
+
+Summing up, today you have eaten <%= @eaten_product.meals.sum(&:calories) %> calories, what is <%= (@eaten_product.meals.sum(&:calories) - @previous_eaten_product.meals.sum(&:calories)).abs %> calories <%= @eaten_product.meals.sum(&:calories) > @previous_eaten_product.meals.sum(&:calories) ? 'more' : 'less' %> than yesterday.
+
+<% else %>
+Unfortunately, you haven't eaten anything yesterday.
+<% end %>

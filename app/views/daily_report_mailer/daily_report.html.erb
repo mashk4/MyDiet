@@ -1,0 +1,49 @@
+<h1>Your report for <%= @eaten_product.format_date %></h1>
+
+<div>
+  <p>Hello, <%= @user.name || @user.email %>!</p>
+  Here is the list of what you have eaten today:
+    <% @eaten_product.meals.each do |eaten_product| %>
+      <ul class="list-group">
+        <li class="list-group-item mt-1 col-sm-2">
+          <%= eaten_product.name.capitalize %>
+        </li>
+      </ul>
+    <% end %>
+</div>
+
+<div class="card-body mt-3">
+  <h3>Stats for this day:</h3>
+    <%= render 'table', object: @eaten_product %>
+</div>
+
+<div class="mt-3">
+  <% if @previous_eaten_product %>
+  Here is the list of what you have eaten yesterday:
+    <% @previous_eaten_product.meals.each do |eaten_product| %>
+      <ul class="list-group">
+        <li class="list-group-item mt-1 col-sm-2">
+          <%= eaten_product.name.capitalize %>
+        </li>
+      </ul>
+    <% end %>
+
+    <div class="card-body mt-3">
+      <h3>Stats for yesterday:</h3>
+        <%= render 'table', object: @previous_eaten_product %>
+    </div>
+
+    <div>
+      <h2>Summing up, today you have eaten <%= @eaten_product.meals.sum(&:calories) %> calories,
+      what is
+      <%= calculate_calories.abs %>
+      calories or by
+      <%= calculate_calories_percentage %>%
+      <%= calculate_calories.positive? ? 'more' : 'less' %>
+      than yesterday.
+      </h2>
+    </div>
+  <% else %>
+  <div>Unfortunately, you haven't eaten anything yesterday.</div>
+  <% end %>
+</div>

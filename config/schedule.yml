@@ -1,0 +1,4 @@
+daily_report_job:
+  cron: "0 22 * * *"
+  class: "DailyReportJob"
+  queue: default

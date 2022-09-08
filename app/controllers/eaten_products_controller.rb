@@ -18,8 +18,6 @@ class EatenProductsController < ApplicationController
   def create
     @eaten_product = current_user.eaten_products.build(create_eaten_product_params)
     if @eaten_product.save
-      ReportMailer.with(user: current_user, eaten_product: @eaten_product)
-      .send_report.deliver_later
       flash[:success] = 'Eaten meals list was successfully added!'
       redirect_to eaten_product_path(@eaten_product)
     else
@@ -46,8 +44,9 @@ class EatenProductsController < ApplicationController
   end
 
   def send_report
-    ReportMailer.with(user: current_user, eaten_product: @eaten_product)
-    .send_report.deliver_later
+    ReportJob.perform_later(@eaten_product, current_user)
+
+    flash[:success] = 'Email with report was successfully sent!'
 
     redirect_to eaten_products_path
   end

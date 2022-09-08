@@ -28,8 +28,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'devise', '~> 4.8.1'
-gem 'sidekiq', '~> 6.5.5'
-gem 'sidekiq-cron', '~> 1.7.0'
+gem 'sidekiq', '~> 6'
+gem 'sidekiq-cron'
 gem 'httparty', '~> 0.17.3'
 gem 'rubocop-rails', '~> 2.15'
 gem 'rubyzip', '~> 2.3.2'

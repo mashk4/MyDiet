@@ -4,7 +4,7 @@ class ReportMailer < ApplicationMailer
     @eaten_product = params[:eaten_product]
 
     mail(
-      to: User.first.email,
+      to: @user.email,
       subject: "Report for #{@eaten_product.format_date}"
     )
   end

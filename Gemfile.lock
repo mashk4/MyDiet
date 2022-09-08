@@ -113,7 +113,7 @@ GEM
     erubi (1.11.0)
     et-orbi (1.2.7)
       tzinfo
-    fugit (1.5.3)
+    fugit (1.6.0)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     globalid (1.0.0)
@@ -247,10 +247,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (6.5.5)
-      connection_pool (>= 2.2.2)
+    sidekiq (6.5.6)
+      connection_pool (>= 2.2.5)
       rack (~> 2.0)
-      redis (>= 4.5.0)
+      redis (>= 4.5.0, < 5)
     sidekiq-cron (1.7.0)
       fugit (~> 1)
       sidekiq (>= 4.2.1)
@@ -317,8 +317,8 @@ DEPENDENCIES
   rubyXL (~> 3.4)
   rubyzip (~> 2.3.2)
   selenium-webdriver
-  sidekiq (~> 6.5.5)
-  sidekiq-cron (~> 1.7.0)
+  sidekiq (~> 6)
+  sidekiq-cron
   sprockets-rails
   stimulus-rails
   turbo-rails

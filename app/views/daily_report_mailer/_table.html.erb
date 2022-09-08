@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <%= content_tag(:thead) do %>
+    <%= content_tag(:tr) do %>
+      <% ['nutrients', 'in total'].each do |el| %>
+        <%= content_tag(:th, scope: "col") do %>
+          <%= el.capitalize %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag(:tbody) do %>
+    <% %w[calories sugar protein fat carbohydrates].each do |el| %>
+      <%= content_tag(:tr) do %>
+        <%= content_tag(:th, scope: "row") do %>
+          <%= el.capitalize %>
+            <%= content_tag(:td) do %>
+              <%= object.meals.sum(&el.to_sym) %>
+            <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>

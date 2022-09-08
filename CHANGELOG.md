@@ -1,9 +1,17 @@
+# 1.2.0 - 2022-09-08
+ * Added:
+    * Mailers;
+    * Background processing with Sidekiq;
+    * Reset password mail;
+    * Report Mailer that sends email with eaten meals statistic;
+    * Daily Report Mailer that sends eaten meals statistic everyday at 10 pm (using Sidekiq-cron) and compares it with the previous day;
+
 # 1.2.0 - 2022-08-30
  * Added:
     * Roles: admin and basic user;
-    * Dashboard for admin with all users. Admin can now export and import users in xlsx format. The structure for importing users in xlsx format for each row is
+    * Dashboard for admin with all users. Admin can now export and import users in xlsx format. Import should be as zip file. The structure for importing users in xlsx format for each row is
 
-    `name | email | password`;
+    `name | email | password`
 
     * Policies with help of Pundit gem.
 
