@@ -1,3 +1,5 @@
+<% stats = total_stats(%w[calories sugar protein fat carbohydrates], object) %>
+
 <%= content_tag(:table, class: 'table table-striped')  do%>
   <%= content_tag(:thead) do %>
     <%= content_tag(:tr) do %>
@@ -15,7 +17,7 @@
         <%= content_tag(:th, scope: "row") do %>
           <%= el.capitalize %>
             <%= content_tag(:td) do %>
-              <%= object.meals.sum(&el.to_sym) %>
+              <%= stats[el] %>
             <% end %>
         <% end %>
       <% end %>

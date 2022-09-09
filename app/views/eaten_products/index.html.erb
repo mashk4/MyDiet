@@ -1,18 +1,37 @@
 <div class="container">
-  <h1 class="mb-4 mt-4">List of your eaten meals:</h1>
+  <h1 class="mb-4 mt-4">Your eaten meals:</h1>
   <div class="mt-3 mb-3">
-    <%= form_tag(eaten_products_path, method: :get) do  %>
-      <label>Select by day:</label>
-      <%= date_field_tag(:search_by_day, params[:search_by_day],
-        data: {
-        controller: "flatpickr",
-        selected: params[:search_by_day]
-        }) %>
-      <%= submit_tag('Find') %>
-    <% end %>
+    <div>
+      <%= form_tag(eaten_products_path, method: :get) do  %>
+        <label>Select by day:</label>
+        <%= date_field_tag(:search_by_day, params[:search_by_day],
+          data: {
+          controller: "flatpickr",
+          selected: params[:search_by_day]
+          }) %>
+        <%= submit_tag('Find') %>
+      <% end %>
+    </div>
+
+    <div class="mt-3">
+      <%= form_tag(eaten_products_path, method: :get) do  %>
+        <label>Select by day range:</label>
+        <%= date_field_tag(:start_day, :start_day,
+          data: {
+          controller: "flatpickr",
+          selected: :start_day
+          }) %>
+        <%= date_field_tag(:end_day, :end_day,
+          data: {
+          controller: "flatpickr",
+          selected: :end_day
+          }) %>
+        <%= submit_tag('Find') %>
+      <% end %>
+    </div>
   </div>
 
-  <% if @eaten_products.present? %>
+  <% if @eaten_products.present? && params[:start_day].nil? && params[:end_day].nil? %>
     <% @eaten_products.each do |eaten_product| %>
       <%= render eaten_product %>
     <% end %>
@@ -21,39 +40,25 @@
       <div class="card-body">
         <h2>Stats for this day:</h2>
         <% @eaten_products.each do |eaten_product| %>
-          <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Nutrients</th>
-              <th scope="col">In total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Calories</th>
-             <td><%= eaten_product.meals.sum(&:calories) %></td>
-            </tr>
-            <tr>
-              <th scope="row">Sugar</th>
-              <td><%= eaten_product.meals.sum(&:sugar) %></td>
-            </tr>
-            <tr>
-              <th scope="row">Protein</th>
-              <td><%= eaten_product.meals.sum(&:protein) %></td>
-            </tr>
-            <tr>
-              <th scope="row">Fat</th>
-              <td><%= eaten_product.meals.sum(&:fat) %></td>
-            </tr>
-            <tr>
-              <th scope="row">Carbohydrates</th>
-              <td><%= eaten_product.meals.sum(&:carbohydrates) %></td>
-            </tr>
-          </tbody>
-          </table>
+          <%= render 'table', object: eaten_product %>
         <% end %>
       </div>
     </article>
+
+  <% elsif @eaten_products.present? && params[:start_day].present? && params[:end_day].present? %>
+    <article class="card mb-3">
+      <div class="card-body">
+        <h2>
+          Stats from <%= Date.parse(params[:start_day]).strftime('%d-%m-%Y') %>
+          to <%= Date.parse(params[:end_day]).strftime('%d-%m-%Y') %>:
+        </h2>
+        <%= render 'total_stats_table', object: @eaten_products %>
+      </div>
+    </article>
+
+    <% @eaten_products.each do |eaten_product| %>
+      <%= render eaten_product %>
+    <% end %>
 
   <% else %>
     <%= 'You have no eaten meals for this day.' %>

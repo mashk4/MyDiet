@@ -6,7 +6,11 @@ class EatenProductsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @eaten_products = current_user.eaten_products.search_by_day(params[:search_by_day])
+    @eaten_products = current_user.eaten_products.search_by_day(params[:search_by_day]).includes(:user)
+    if params[:start_day].present? && params[:end_day].present?
+      @eaten_products = current_user.eaten_products.search_by_range(params[:start_day], params[:end_day])
+      .includes(:user)
+    end
   end
 
   def show; end
@@ -54,12 +58,12 @@ class EatenProductsController < ApplicationController
   private
 
   def create_eaten_product_params
-    params.require(:eaten_product).permit(:eaten_at, :search_by_day, meal_ids: [])
+    params.require(:eaten_product).permit(:eaten_at, :search_by_day, :start_day, :end_day, meal_ids: [])
     .merge(user: current_user)
   end
 
   def update_eaten_product_params
-    params.require(:eaten_product).permit(:eaten_at, :search_by_day, meal_ids: [])
+    params.require(:eaten_product).permit(:eaten_at, :search_by_day, :start_day, :end_day, meal_ids: [])
   end
 
   def find_eaten_product
