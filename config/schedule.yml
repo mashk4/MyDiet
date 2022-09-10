@@ -2,3 +2,13 @@ daily_report_job:
   cron: "0 22 * * *"
   class: "DailyReportJob"
   queue: default
+
+weekly_report_job:
+  cron: "0 22 * * SUN"
+  class: "WeeklyReportJob"
+  queue: default
+
+monthly_report_job:
+  cron: "0 10 1 * *"
+  class: "MonthlyReportJob"
+  queue: default

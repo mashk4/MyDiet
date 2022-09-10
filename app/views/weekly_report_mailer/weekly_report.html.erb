@@ -1,0 +1,13 @@
+<h1>
+  Your weekly report from <%= (Date.today - 6).strftime('%d-%m-%Y') %>
+  to <%= Date.today.strftime('%d-%m-%Y') %>
+</h1>
+
+<div>
+  <p>Hello, <%= @user.email.split('@')[0] if @user.name.nil? || @user.name %>!</p>
+  Here are the statistics for the last week of what you have eaten:
+</div>
+
+<div class="card-body mt-3">
+    <%= render 'table', object: @eaten_products %>
+</div>

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   enum role: { basic: 0, admin: 1 }, _suffix: :role
+  enum report_frequency: { none: 0, daily: 1, weekly: 2, monthly: 3 }, _suffix: :report
 
   has_many :diets, dependent: :destroy
   has_many :eaten_products, dependent: :destroy

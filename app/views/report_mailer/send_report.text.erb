@@ -1,7 +1,7 @@
 Your report for <%= @eaten_product.format_date %>
 
 
-Hello, <%= @user.name || @user.email %>!
+Hello, <%= @user.email.split('@')[0] if @user.name.nil? || @user.name %>!
 
 Here is the list of what you have eaten:
 <% @eaten_product.meals.each do |eaten_product| %>

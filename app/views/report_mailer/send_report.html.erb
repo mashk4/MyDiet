@@ -1,7 +1,7 @@
 <h1>Your report for <%= @eaten_product.format_date %></h1>
 
 <div>
-  <p>Hello, <%= @user.name || @user.email %>!</p>
+  <p>Hello, <%= @user.email.split('@')[0] if @user.name.nil? || @user.name %>!</p>
   Here is the list of what you have eaten:
     <% @eaten_product.meals.each do |eaten_product| %>
       <ul class="list-group">

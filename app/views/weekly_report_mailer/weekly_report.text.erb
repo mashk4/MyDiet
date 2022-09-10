@@ -1,0 +1,13 @@
+Your weekly report from <%= (Date.today - 6).strftime('%d-%m-%Y') %> to <%= Date.today.strftime('%d-%m-%Y') %>
+
+
+Hello, <%= @user.email.split('@')[0] if @user.name.nil? || @user.name %>!
+
+Statistics for the last week:
+
+Total calories: <%= total_stats(%w[calories], @eaten_products)['calories'] %>
+
+Nutrients:
+<% %w[sugar protein fat carbohydrates].each do |el| %>
+  <%= el.capitalize %>: <%= total_stats([el], @eaten_products)[el] %>
+<% end %>
