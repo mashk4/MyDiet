@@ -6,7 +6,7 @@ module WeeklyReportMailerHelper
               'fat' => 0,
               'carbohydrates' => 0 }
 
-    eaten_products.each do |product|
+    eaten_products.includes(:eaten_product_meals, :meals).each do |product|
       nutrients.each do |el|
         stats[el] += product.meals.sum(&el.to_sym)
       end

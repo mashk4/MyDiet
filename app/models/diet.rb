@@ -6,9 +6,8 @@ class Diet < ApplicationRecord
   has_many :diet_meals, dependent: :destroy
   has_many :meals, through: :diet_meals
 
-  validates :date, presence: true
-
-  validate :correct_date
+  validates :date, presence: true, uniqueness: { scope: :user_id }
+  validate :date_is_in_the_past, if: :date_changed?
 
   scope :search_by_day, ->(date) do
     diet = Diet.find_by(date: date || Date.today)
@@ -21,9 +20,9 @@ class Diet < ApplicationRecord
 
   private
 
-  def correct_date
-    return if date >= Date.today
-
-    errors.add(:date, 'is in the past.')
+  def date_is_in_the_past
+    if date.present? && date < Date.today
+      errors.add(:date, 'is in the past.')
+    end
   end
 end

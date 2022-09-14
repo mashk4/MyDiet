@@ -1,7 +1,7 @@
 class DietsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_diet, only: %i[show edit update destroy]
-  before_action :fetch_meals, only: %i[new edit update]
+  before_action :fetch_meals, only: %i[new edit create update]
   before_action :authorize_diet!
   after_action :verify_authorized
 

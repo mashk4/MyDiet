@@ -27,12 +27,13 @@
 
       <div class="my-3">
         <h3><strong>Nutrients:</strong></h3>
-        <ul>
-          <li>Surgar: <%= @diet.meals.sum(&:sugar) %></li>
-          <li>Protein: <%= @diet.meals.sum(&:protein) %></li>
-          <li>Fat: <%= @diet.meals.sum(&:fat) %></li>
-          <li>Carbohydrates: <%= @diet.meals.sum(&:carbohydrates) %></li>
-        </ul>
+        <%= content_tag(:ul) do %>
+          <% %w[sugar protein fat carbohydrates].collect do |el| %>
+            <%= content_tag(:li) do %>
+              <%= el.capitalize %>: <%= @diet.meals.sum(&el.to_sym) %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
 
       <div class="btn-group">

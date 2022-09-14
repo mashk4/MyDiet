@@ -1,3 +1,8 @@
+# 1.7.0 - 2022-09-14
+  * Added:
+    * Model, Controller and Integration tests;
+    * Fixed some bugs;
+
 # 1.6.0 - 2022-09-10
   * Added:
     * Ability to enable/disable getting daily/weekly/monthly reports;
@@ -11,7 +16,7 @@
     * Report Mailer that sends email with eaten meals statistic;
     * Daily Report Mailer that sends eaten meals statistic everyday at 10 pm (using Sidekiq-cron) and compares it with the previous day;
 
-# 1.4.0 - 2022-08-30
+# 1.4.0 - 2022-09-04
  * Added:
     * Roles: admin and basic user;
     * Dashboard for admin with all users. Admin can now export and import users in xlsx format. Import should be as zip file. The structure for importing users in xlsx format for each row is
@@ -20,7 +25,7 @@
 
     * Policies with help of Pundit gem.
 
-# 1.3.0 - 2022-08-30
+# 1.3.0 - 2022-09-01
  * Added:
     * EatenProduct entity and some stats.
 
