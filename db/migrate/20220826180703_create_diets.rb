@@ -6,6 +6,6 @@ class CreateDiets < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :diets, [:user_id, :date], unique: true
+    add_index :diets, %i[user_id date], unique: true
   end
 end

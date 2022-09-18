@@ -1,44 +1,44 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.3", ">= 7.0.3.1"
+gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem 'puma', '~> 5.0'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem 'importmap-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+gem 'jbuilder'
 
-gem 'devise', '~> 4.8.1'
-gem 'sidekiq', '~> 6'
-gem 'sidekiq-cron'
-gem 'httparty', '~> 0.17.3'
-gem 'rubocop-rails', '~> 2.15'
-gem 'rubyzip', '~> 2.3.2'
+gem 'activerecord-import', '~> 1.2'
 gem 'caxlsx', '~> 3.1'
 gem 'caxlsx_rails', '~> 0.6'
-gem 'rubyXL', '~> 3.4'
-gem 'activerecord-import', '~> 1.2'
-gem 'pundit', '~> 2.2.0'
+gem 'devise', '~> 4.8.1'
+gem 'httparty', '~> 0.17.3'
 gem 'letter_opener'
+gem 'pundit', '~> 2.2.0'
+gem 'rubocop-rails', '~> 2.15'
+gem 'rubyXL', '~> 3.4'
+gem 'rubyzip', '~> 2.3.2'
+gem 'sidekiq', '~> 6'
+gem 'sidekiq-cron'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -50,10 +50,10 @@ gem 'letter_opener'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -63,22 +63,22 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rails-controller-testing'
-  gem 'capybara'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
-  gem 'database_cleaner'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
   gem 'bullet', '~> 7.0.3'
+  gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -89,7 +89,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end

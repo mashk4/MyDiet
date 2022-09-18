@@ -9,7 +9,7 @@ class EatenProductsController < ApplicationController
     @eaten_products = current_user.eaten_products.search_by_day(params[:search_by_day]).includes(:user)
     if params[:start_day].present? && params[:end_day].present?
       @eaten_products = current_user.eaten_products.search_by_range(params[:start_day], params[:end_day])
-      .includes(:user)
+                                    .includes(:user)
     end
   end
 
@@ -59,7 +59,7 @@ class EatenProductsController < ApplicationController
 
   def create_eaten_product_params
     params.require(:eaten_product).permit(:eaten_at, :search_by_day, :start_day, :end_day, meal_ids: [])
-    .merge(user: current_user)
+          .merge(user: current_user)
   end
 
   def update_eaten_product_params

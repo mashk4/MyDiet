@@ -1,12 +1,15 @@
+# 1.7.1 - 2022-09-18
+  * Code refactoring.
+
 # 1.7.0 - 2022-09-14
   * Added:
     * Model, Controller and Integration tests;
-    * Fixed some bugs;
+    * Fixed some bugs.
 
 # 1.6.0 - 2022-09-10
   * Added:
     * Ability to enable/disable getting daily/weekly/monthly reports;
-    * Weekly/monthly reports;
+    * Weekly/monthly reports.
 
 # 1.5.0 - 2022-09-08
  * Added:
@@ -14,7 +17,7 @@
     * Background processing with Sidekiq;
     * Reset password mail;
     * Report Mailer that sends email with eaten meals statistic;
-    * Daily Report Mailer that sends eaten meals statistic everyday at 10 pm (using Sidekiq-cron) and compares it with the previous day;
+    * Daily Report Mailer that sends eaten meals statistic everyday at 10 pm (using Sidekiq-cron) and compares it with the previous day.
 
 # 1.4.0 - 2022-09-04
  * Added:

@@ -5,11 +5,13 @@ class WeeklyReportJob < ApplicationJob
     if Date.today.sunday?
       User.find_each do |user|
         if user.report_frequency == 'weekly'
-          WeeklyReportMailer.with(user: user, eaten_products: user.eaten_products
-          .where(eaten_at: Date.today - 6..Date.today)).weekly_report.deliver_now
+          eaten_products = user.eaten_products.where(eaten_at: Date.all_week)
+          WeeklyReportMailer.with(
+            user: user,
+            eaten_products: eaten_products
+          ).weekly_report.deliver_now
         end
       end
     end
   end
 end
-

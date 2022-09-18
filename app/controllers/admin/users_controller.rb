@@ -16,7 +16,7 @@ module Admin
     def create
       if params[:archive].present?
         UserBulkService.call(params[:archive])
-        flash[:success] = "Users imported!"
+        flash[:success] = 'Users imported!'
       end
 
       redirect_to admin_users_path
@@ -26,7 +26,7 @@ module Admin
 
     def update
       if @user.update(user_params)
-        flash[:success] = "User updated!"
+        flash[:success] = 'User updated!'
         redirect_to admin_users_path
       else
         render :edit, status: :unprocessable_entity
@@ -35,7 +35,7 @@ module Admin
 
     def destroy
       @user.destroy
-      flash[:success] = "User deleted!"
+      flash[:success] = 'User deleted!'
       redirect_to admin_users_path
     end
 
@@ -50,7 +50,7 @@ module Admin
             handlers: [:axlsx],
             formats: [:xlsx],
             template: 'admin/users/user',
-            locals: { user: user }
+            locals: { user: }
           )
         end
       end

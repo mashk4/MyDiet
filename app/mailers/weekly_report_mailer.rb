@@ -5,8 +5,8 @@ class WeeklyReportMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Weekly report from #{(Date.today - 6).strftime('%d-%m-%Y')} to
-      #{Date.today.strftime('%d-%m-%Y')}"
+      subject: "Weekly report from #{Date.today.all_week.first.strftime('%d-%m-%Y')} to
+      #{Date.today.all_week.last.strftime('%d-%m-%Y')}"
     )
   end
 end

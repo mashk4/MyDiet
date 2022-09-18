@@ -6,6 +6,6 @@ class CreateEatenProductMeals < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :eaten_product_meals, [:eaten_product_id, :meal_id], unique: true
+    add_index :eaten_product_meals, %i[eaten_product_id meal_id], unique: true
   end
 end

@@ -21,8 +21,6 @@ class Diet < ApplicationRecord
   private
 
   def date_is_in_the_past
-    if date.present? && date < Date.today
-      errors.add(:date, 'is in the past.')
-    end
+    errors.add(:date, 'is in the past.') if date.present? && date < Date.today
   end
 end

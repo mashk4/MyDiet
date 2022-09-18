@@ -12,7 +12,7 @@ class EatenProduct < ApplicationRecord
   end
 
   scope :search_by_range, ->(start_date, end_date) do
-    eaten_products_list = EatenProduct.where(eaten_at: start_date..end_date)
+    EatenProduct.where(eaten_at: start_date..end_date)
   end
 
   def format_date

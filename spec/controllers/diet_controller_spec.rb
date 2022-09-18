@@ -20,57 +20,57 @@ RSpec.describe DietsController, type: :controller do
     end
   end
 
-  describe "GET diets#show" do
-    it "should return 200" do
+  describe 'GET diets#show' do
+    it 'should return 200' do
       user = FactoryBot.create(:user)
-      diet = FactoryBot.create(:diet, user: user)
+      diet = FactoryBot.create(:diet, user:)
 
       sign_in user
 
-      get :show , params: { id: user.diets.first.id }
+      get :show, params: { id: user.diets.first.id }
       expect(response).to be_successful
     end
   end
 
-  describe "GET diets#edit" do
-    it "should return 200" do
+  describe 'GET diets#edit' do
+    it 'should return 200' do
       user = FactoryBot.create(:user)
-      diet = FactoryBot.create(:diet, user: user)
+      diet = FactoryBot.create(:diet, user:)
 
       sign_in user
 
-      get :edit , params: { id: user.diets.first.id }
+      get :edit, params: { id: user.diets.first.id }
       expect(response).to be_successful
     end
   end
 
-  describe "GET diets#new" do
+  describe 'GET diets#new' do
     let(:user) { FactoryBot.create(:user) }
 
-    it "should return 200" do
+    it 'should return 200' do
       sign_in user
       get :new
       expect(response).to be_successful
     end
   end
 
-  describe "POST diets#create" do
-    context "with valid attributes" do
-      it "should save the new diet in the database" do
+  describe 'POST diets#create' do
+    context 'with valid attributes' do
+      it 'should save the new diet in the database' do
         user = FactoryBot.create(:user)
 
         sign_in user
 
-        expect { post :create, params: { diet: {
-          name: 'My diet',
-          date: Date.today + 3,
-          meal_ids: []
-          }
-        }
-        }.to change(Diet, :count).by(1)
+        expect do
+          post :create, params: { diet: {
+            name: 'My diet',
+            date: Date.today + 3,
+            meal_ids: []
+          } }
+        end.to change(Diet, :count).by(1)
       end
 
-      it "should redirect to the diets#show page" do
+      it 'should redirect to the diets#show page' do
         user = FactoryBot.create(:user)
         sign_in user
 
@@ -78,16 +78,14 @@ RSpec.describe DietsController, type: :controller do
           name: 'My diet',
           date: Date.today + 3,
           meal_ids: []
-          }
-        }
+        } }
 
         expect(response).to redirect_to(diet_path(Diet.last))
       end
-
     end
 
-    context "with invalid attributes" do
-      it "should not save the new diet in the database" do
+    context 'with invalid attributes' do
+      it 'should not save the new diet in the database' do
         user = FactoryBot.create(:user)
         sign_in user
 
@@ -95,13 +93,12 @@ RSpec.describe DietsController, type: :controller do
           name: 'My test diet',
           date: Date.today - 1,
           meal_ids: []
-          }
-        }
+        } }
 
         expect(Diet.count).to eq(0)
       end
 
-      it "should render diets#new template" do
+      it 'should render diets#new template' do
         user = FactoryBot.create(:user)
         sign_in user
 
@@ -109,35 +106,34 @@ RSpec.describe DietsController, type: :controller do
           name: 'My diet',
           date: Date.today - 5,
           meal_ids: []
-          }
-        }
+        } }
 
         expect(response).to render_template(:new)
       end
     end
   end
 
-  describe "PUT diets#update" do
-    it "should update an existing diet" do
+  describe 'PUT diets#update' do
+    it 'should update an existing diet' do
       user = FactoryBot.create(:user)
-      diet = FactoryBot.create(:diet, user: user)
+      diet = FactoryBot.create(:diet, user:)
       sign_in user
 
-      expect {
+      expect do
         put :update,
-        params: { id: diet.id, diet: {
-          name: 'new diet',
-          date: Date.today + 5,
-          meal_ids: []
-          } }
-      }.to change { diet.reload.name }.from(diet.name).to('new diet')
+            params: { id: diet.id, diet: {
+              name: 'new diet',
+              date: Date.today + 5,
+              meal_ids: []
+            } }
+      end.to change { diet.reload.name }.from(diet.name).to('new diet')
     end
   end
 
-  describe "DELETE diets#destroy" do
-    it "should delete a diet" do
+  describe 'DELETE diets#destroy' do
+    it 'should delete a diet' do
       user = FactoryBot.create(:user)
-      diet = FactoryBot.create(:diet, user: user)
+      diet = FactoryBot.create(:diet, user:)
       sign_in user
 
       expect { delete :destroy, params: { id: diet.id } }.to change(Diet, :count).by(-1)

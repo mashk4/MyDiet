@@ -1,4 +1,3 @@
-require 'uri'
 require 'httparty'
 require 'json'
 
@@ -7,15 +6,14 @@ meals = []
 File.readlines('db/data_source/basic_meals.txt').each { |line| meals << line }
 
 meals.each do |meal|
-  begin
   url = "https://api.calorieninjas.com/v1/nutrition?query=#{meal}"
 
   response = HTTParty.get(
     url,
     headers: {
       'X-Api-Key': 'xYNwwyjGioi7aKeNYsCkjw==BAy4qUVnYmrmUREN'
-      }
-    )
+    }
+  )
 
   doc = JSON.parse(response.body)
 
@@ -29,7 +27,6 @@ meals.each do |meal|
       carbohydrates: doc_meal['carbohydrates_total_g']
     )
   end
-  rescue ActiveRecord::RecordNotUnique
-    next
-  end
+rescue ActiveRecord::RecordNotUnique
+  next
 end

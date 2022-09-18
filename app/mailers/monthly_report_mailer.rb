@@ -5,8 +5,8 @@ class MonthlyReportMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Monthly report from #{(Date.today - 1).all_month.first.strftime('%d-%m-%Y')} to
-      #{(Date.today - 1).all_month.last.strftime('%d-%m-%Y')}"
+      subject: "Monthly report from #{Date.yesterday.all_month.first.strftime('%d-%m-%Y')} to
+      #{Date.yesterday.all_month.last.strftime('%d-%m-%Y')}"
     )
   end
 end

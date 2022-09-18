@@ -3,10 +3,14 @@ class DailyReportJob < ApplicationJob
 
   def perform
     User.find_each do |user|
-      if user.eaten_products.find_by(eaten_at: Date.today) && user.report_frequency == 'daily'
-        DailyReportMailer.with(user: user, eaten_product: user.eaten_products
-        .find_by(eaten_at: Date.today), previous_eaten_product: user.eaten_products
-        .find_by(eaten_at: Date.today - 1)).daily_report.deliver_now
+      eaten_product =  user.eaten_products.find_by(eaten_at: Date.today)
+      if eaten_product && user.report_frequency == 'daily'
+        previous_eaten_product = user.eaten_products.find_by(eaten_at: Date.yesterday)
+        DailyReportMailer.with(
+          user: user,
+          eaten_product: eaten_product,
+          previous_eaten_product: previous_eaten_product
+        ).daily_report.deliver_now
       end
     end
   end
